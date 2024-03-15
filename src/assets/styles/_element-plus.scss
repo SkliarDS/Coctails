@@ -1,0 +1,10 @@
+.info__drobdown {
+    .el-select__wrapper {
+        background-color: $bg;
+        border-color: $textAccent;
+    }
+    .el-select__placeholder {
+        color: $textAccent;
+        font-size: 16px;
+    }
+}
