@@ -5,21 +5,24 @@ const props = defineProps({
         type: String,
         required: true,
     },
-    coctail: {
-        type: Object,
+    backFunc: {
+        type: Function,
         requered: true
+    },
+    isBackButtonVisible: {
+        type: Boolean,
+        difault: true
     } 
 })
+
 </script>
 
 <template>
     <main class="main">
         <section class="main__bg" :style="`background-image: url(${imgUrl})`"></section>
         <section class="main__content content">
-            <div class="content__header">
-                <!-- <RouterLink to="/">
-                    <div class="content__array" v-show="$route.path !== '/home' || coctail.idDrink"><img class=' lazy' width='40' height='40' src='../assets/img/arrow.svg' alt='' title=''></div>
-                </RouterLink> -->
+            <div class="content__header">             
+                <button class="content__array" @click="backFunc" v-show="isBackButtonVisible"><img class=' lazy' width='40' height='40' src='../assets/img/arrow.svg' alt='' title=''></button>               
                 <el-button class="btn">Get random cocktail</el-button>                
             </div>
             <div class="content__body">
@@ -59,6 +62,7 @@ const props = defineProps({
     background-color: $color;
     color: $text;
     padding: 0 20px;
+    margin-left: auto;
     @media (hover: hover){
         &:hover, &:active {
             background-color: darken($color, 10%);

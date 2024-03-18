@@ -1,5 +1,4 @@
 <script  setup>
-    import { ref } from 'vue'
     import AppLayout from '@/components/AppLayout.vue';
     import CoctailsThum from '../components/CoctailsThumb.vue'
     import { useRootStore } from '@/stores/root';
@@ -8,26 +7,28 @@
 
     const rootStore = useRootStore();
     rootStore.getIngredients();
-    const { ingredients, coctails } = storeToRefs(rootStore);
-
-    const ingredient = ref(null)
+    const { ingredients, coctails, ingredient } = storeToRefs(rootStore);  
 
     const changeIngredient =()=>{
-        rootStore.getCoctails(ingredient.value);
+        rootStore.getCoctails(rootStore.ingredient);
     }
-    
+    const resetIndredient =()=>{
+        rootStore.setIngredient(null);
+    }
 </script>
 
 <template>
-    <AppLayout imgUrl="/src/assets/img/dawa-cocktail_1.jpg">
+    <AppLayout :imgUrl="`/src/assets/img/dawa-cocktail_1.jpg`" :backFunc="resetIndredient" :is-back-button-visible="!!ingredient">
         <div v-if="!ingredient || !coctails" class="info">
             <h1 class="title --line">Choose your drink</h1>
             <div class="info__drobdown">
                 <el-select
-                    v-model="ingredient"
+                    v-model="rootStore.ingredient"
                     placeholder="Choose main ingredient"
                     size="large"
                     style="width: 300px"
+                    filterable
+                    allow-create
                     @change="changeIngredient"
                     >
                     <el-option
