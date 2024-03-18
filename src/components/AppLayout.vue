@@ -1,4 +1,7 @@
 <script setup>
+import { computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { ROUTES_PATHS } from '../constants/router'
 
 const props = defineProps({
     imgUrl: {
@@ -14,6 +17,16 @@ const props = defineProps({
         difault: true
     } 
 })
+const route = useRoute()
+const router = useRouter()
+const routeName = computed(()=> route.name )
+
+const goToRandomCoctail=()=>{
+    router.push(ROUTES_PATHS.COCTAIL_RANDOM)
+    if(routeName.value === ROUTES_PATHS.COCTAIL_RANDOM){
+        router.go();
+    }
+}
 
 </script>
 
@@ -23,7 +36,7 @@ const props = defineProps({
         <section class="main__content content">
             <div class="content__header">             
                 <button class="content__array" @click="backFunc" v-show="isBackButtonVisible"><img class=' lazy' width='40' height='40' src='../assets/img/arrow.svg' alt='' title=''></button>               
-                <el-button class="btn">Get random cocktail</el-button>                
+                <el-button @click="goToRandomCoctail" class="btn">Get random cocktail</el-button>                
             </div>
             <div class="content__body">
                 <slot></slot>
