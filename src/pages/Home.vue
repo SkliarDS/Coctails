@@ -18,7 +18,7 @@
 </script>
 
 <template>
-    <AppLayout :imgUrl="`/src/assets/img/dawa-cocktail_1.jpg`" :backFunc="resetIndredient" :is-back-button-visible="!!ingredient">
+    <AppLayout :imgUrl="`https://www.thecocktaildb.com/images/media/drink/vysuyq1441206297.jpg`" :backFunc="resetIndredient" :is-back-button-visible="!!ingredient">
         <div v-if="!ingredient || !coctails" class="info">
             <h1 class="title --line">Choose your drink</h1>
             <div class="info__drobdown">
