@@ -67,7 +67,7 @@ const goBack =()=>{router.go(-1)}
 @import '../assets/styles/main';
 
 .info__list {
-    width: 50%;
+    max-width: 500px;
     li {
         background-image: url('./../assets/img/heart.svg');
         background-repeat: no-repeat;

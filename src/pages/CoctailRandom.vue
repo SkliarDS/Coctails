@@ -45,7 +45,7 @@ const goBack =()=>{router.go(-1)}
                 <div class="slider">
                     <swiper
                         class="slider__swiper"
-                        :slides-per-view="3"
+                        :slides-per-view="2"
                         :space-between="50"
                         :pagination="{ clickable: true }"
                     >
@@ -87,6 +87,9 @@ const goBack =()=>{router.go(-1)}
 }
 .slider__swiper {
     max-width: 500px;
+    @media(max-width: 480px){
+        max-width: 280px;
+    }
 }
 .slider__slide {
     display: flex;

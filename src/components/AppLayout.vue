@@ -52,6 +52,11 @@ const goToRandomCoctail=()=>{
     grid-template-columns: 1fr 1fr;
     background-color: $bg;
     height: 100vh;
+    @media(max-width: 767px){
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 1fr;
+        height: 100%;
+    }
 }
 .main__bg {
     height: 100%;
@@ -63,6 +68,9 @@ const goToRandomCoctail=()=>{
     height: 100%;
     padding: 32px 40px;
     background-color: $bg;
+    @media(max-width: 767px){
+        // height: 50%;
+    }
 }
 .content__header {
     display: flex;
